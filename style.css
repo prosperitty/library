@@ -1,5 +1,7 @@
 body {
-    background: linear-gradient(90deg, rgba(0,54,255,1) 0%, rgba(0,255,250,1) 100%);
+    background: linear-gradient(90deg, rgba(0,223,236,1) 0%, rgba(0,142,255,1) 50%, rgba(0,53,255,1) 100%); 
+    margin: 0;
+    padding: 0;
     color: white;
 }
 
@@ -19,4 +21,39 @@ h1 {
 
 .title {
     margin: 0;
+}
+
+.book-form {
+    max-width: 300px;
+    margin: 0 auto;
+
+}
+
+label {
+    display: block;
+}
+
+input[type="text"] {
+    height: 30px;
+    width: 298px;
+
+    border: none;
+    /* border-radius: 50px; */
+
+    font-size: 1em;
+    outline: none;
+}
+
+button[type="submit"] {
+    height: 35px;
+    width: 100%;
+    padding: 0;
+    margin-top: 10px;
+
+    border: none;
+    background-color: rgb(70, 253, 138);
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(0, 221, 81);
 }
