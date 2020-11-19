@@ -1,8 +1,8 @@
 body {
-    background: linear-gradient(90deg, rgba(0,223,236,1) 0%, rgba(0,142,255,1) 50%, rgba(0,53,255,1) 100%); 
+    background: rgb(54, 195, 202);
     margin: 0;
     padding: 0;
-    color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -14,19 +14,22 @@ h1 {
     padding: 10px;
     margin: 20px auto;
     border-radius: 4px;
-    box-shadow: 5px 5px 15px rgb(0, 0, 0);
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
     background: white;
-    color: black;
 }
 
 .title {
     margin: 0;
 }
 
-.book-form {
-    max-width: 300px;
-    margin: 0 auto;
+fieldset {
+    margin: 0;
+    border: 5px solid black;
+}
 
+.book-form {
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 label {
@@ -35,13 +38,12 @@ label {
 
 input[type="text"] {
     height: 30px;
-    width: 298px;
+    width: 100%;
+    padding: 0;
 
     border: none;
-    /* border-radius: 50px; */
 
     font-size: 1em;
-    outline: none;
 }
 
 button[type="submit"] {
@@ -49,6 +51,9 @@ button[type="submit"] {
     width: 100%;
     padding: 0;
     margin-top: 10px;
+
+    font-size: 100%;
+    font-family: 'Montserrat', sans-serif;
 
     border: none;
     background-color: rgb(70, 253, 138);
