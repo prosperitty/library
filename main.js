@@ -1,13 +1,18 @@
 const deck = document.querySelector('.deck');
+const bookTitle = document.querySelector('.title-input');
+const bookAuthor = document.querySelector('.author-input');
+const bookPages = document.querySelector('.page-input');
+const bookRead = document.querySelectorAll('.read-input');
+const submitButton = document.querySelector('.submit');
 let myLibrary = [];
 
 class Book {
-    constructor(author,title,pages,isRead) {
-        this.author = author;
+    constructor(title,author,pages,isRead) {
         this.title = title;
+        this.author = author;
         this.pages = pages;
         this.isRead = isRead;
-        this.addBookToLibrary = function () {
+        this.pushToLibrary = function () {
             myLibrary.push(this);
         }
         this.newCard = () => {
@@ -20,20 +25,23 @@ class Book {
 
             const newAuthor = document.createElement('p');
             newAuthor.className = 'author';
-            newAuthor.textContent = author;
+            newAuthor.textContent = `By: ${author}`;
 
             const newPageCount = document.createElement('p');
             newPageCount.className = 'pageCount';
-            newPageCount.textContent = pages;
+            newPageCount.textContent = `Number of Pages: ${pages}`;
         
             const f = document.createElement('form');
         
-            const l = document.createElement('label');
-            l.textContent = 'read';
+            const l = document.createElement('span');
+            l.textContent = 'read status:';
         
             const i = document.createElement("input");
             i.setAttribute('type','checkbox');
             i.setAttribute('name','read');
+            if(bookRead[0].checked === true) {
+                i.checked = true;
+            }
         
             f.appendChild(l);
             f.appendChild(i);
@@ -47,8 +55,17 @@ class Book {
     }
 }
 
-function displayNewCard() {
-    for (const i of myLibrary) {
-        i.newCard();
-    }
-}
+
+
+submitButton.addEventListener('click', () => {
+    let book = new Book(bookTitle.value,bookAuthor.value,bookPages.value,bookRead.value);
+
+    book.pushToLibrary();
+    book.newCard();
+
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    bookPages.value = '';
+
+    console.log(myLibrary);
+})
