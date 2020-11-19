@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -11,26 +12,29 @@
         <h1>Library</h1>
         <section>
             <form action="" method="" class="book-form">
-                <div>
-                    <label for="title">Title</div>
-                    <input type="text" name="title">
-                </div>
-                <div>
-                    <label for="author">Author</label>
-                    <input type="text" name="author" id="">
-                </div>
-                <div>
-                    <label for="page-count">Amount of Pages</label>
-                    <input type="text" name="page-count" id="">
-                </div>
-                <div>
-                    <label for="read">Have You Read This Book?</label>
-                    <span>Yes</span>
-                    <input type="radio" name="read" id="">
-                    <span>No</span>
-                    <input type="radio" name="read" id="">
-                </div>
-                <button type="submit" id="submit">submit</button>
+                <fieldset>
+                    <legend>Add a Book To The Library</legend>
+                    <div>
+                        <label for="title">Title</div>
+                        <input type="text" name="title">
+                    </div>
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" name="author" id="">
+                    </div>
+                    <div>
+                        <label for="page-count">Amount of Pages</label>
+                        <input type="text" name="page-count" id="">
+                    </div>
+                    <div>
+                        <label for="read">Have You Read This Book?</label>
+                        <span>Yes</span>
+                        <input type="radio" name="read" id="">
+                        <span>No</span>
+                        <input type="radio" name="read" id="">
+                    </div>
+                    <button type="submit" id="submit">submit</button>
+                </fieldset>
             </form>
         </section>
         <section class="deck">
