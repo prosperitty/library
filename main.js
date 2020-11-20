@@ -1,4 +1,5 @@
 const deck = document.querySelector('.deck');
+const card = document.querySelectorAll('.card');
 const bookTitle = document.querySelector('.title-input');
 const bookAuthor = document.querySelector('.author-input');
 const bookPages = document.querySelector('.page-input');
@@ -12,10 +13,10 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.isRead = isRead;
-        this.pushToLibrary = function () {
+        this.addToLibrary = function () {
             myLibrary.push(this);
         }
-        this.newCard = () => {
+        this.createNewCard = () => {
             const newDiv = document.createElement('div');
             newDiv.className = 'card';
 
@@ -45,27 +46,32 @@ class Book {
         
             f.appendChild(l);
             f.appendChild(i);
+
+            const deleteCardText = document.createElement('button');
+            deleteCardText.textContent = 'delete';
+            deleteCardText.className = 'delete-button';
         
             deck.appendChild(newDiv);
             newDiv.appendChild(newTitle);
             newDiv.appendChild(newAuthor);
             newDiv.appendChild(newPageCount);
             newDiv.appendChild(f);
+            newDiv.appendChild(deleteCardText)
         }
     }
 }
 
-
-
 submitButton.addEventListener('click', () => {
-    let book = new Book(bookTitle.value,bookAuthor.value,bookPages.value,bookRead.value);
+    let book = new Book(bookTitle.value,bookAuthor.value,bookPages.value,bookRead[0].checked);
 
-    book.pushToLibrary();
-    book.newCard();
+    book.addToLibrary();
+    book.createNewCard();
 
     bookTitle.value = '';
     bookAuthor.value = '';
     bookPages.value = '';
+    bookRead[1].checked = true;
 
     console.log(myLibrary);
+    console.log(card);
 })
