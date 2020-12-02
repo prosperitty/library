@@ -12,42 +12,30 @@
         <h1>Library</h1>
         <section>
             <form action="" method="" class="book-form">
-                <fieldset>
-                    <legend>Add a Book To The Library</legend>
-                    <div>
-                        <label for="title">Title</div>
-                        <input type="text" name="title" class="title-input">
-                    </div>
-                    <div>
-                        <label for="author">Author</label>
-                        <input type="text" name="author" class="author-input">
-                    </div>
-                    <div>
-                        <label for="page-count">Amount of Pages</label>
-                        <input type="text" name="page-count" class="page-input">
-                    </div>
-                    <div>
-                        <label for="read">Have You Read This Book?</label>
-                        <span>Yes</span>
-                        <input type="radio" name="read" class="read-input">
-                        <span>No</span>
-                        <input type="radio" name="read" class="read-input" checked>
-                    </div>
-                    <button type="button" class="submit">submit</button>
-                </fieldset>
+                <legend>Add a Book To The Library</legend>
+                <div class="input-container">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="title-input">
+                </div>
+                <div class="input-container">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" class="author-input">
+                </div>
+                <div class="input-container">
+                    <label for="page-count">Amount of Pages</label>
+                    <input type="text" name="page-count" class="page-input">
+                </div>
+                <div class="input-container">
+                    <label for="read">Have You Read This Book?</label>
+                    <span>Yes</span>
+                    <input type="radio" name="read" class="read-input">
+                    <span>No</span>
+                    <input type="radio" name="read" class="read-input" checked>
+                </div>
+                <button type="button" data-action="delete" class="submit">submit</button>
             </form>
         </section>
         <section class="deck">
-            <div class="card">
-                <h2 class="title">lorem</h2>
-                <p class="author">ipsum</p>
-                <p class="pages">number of pages: 200</p>
-                <form action="">
-                    <span for="">read</span>
-                    <input type="checkbox" name="read" id="" checked>
-                </form>
-                <button class="delete-button">delete</button>
-            </div>
         </section>
     </main>
 </body>
