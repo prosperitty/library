@@ -10,15 +10,17 @@ h1 {
 }
 
 .card {
-    max-width: 300px;
+    height: 250px;
+    width: 200px;
     padding: 10px;
-    margin: 20px auto;
+    margin: 20px;
 
     text-transform: capitalize;
+    text-align: center;
 
-    border-radius: 1px;
-    box-shadow: 1px 4px 5px 2px rgb(0, 0, 0);
-    background: white;
+    border-radius: 3px;
+    box-shadow: 1px 4px 5px 2px rgb(31, 123, 128);
+    background: rgb(162, 90, 36);
 }
 
 .title {
@@ -30,7 +32,7 @@ legend {
 }
 
 .book-form {
-    max-width: 400px;
+    max-width: 300px;
     margin: 0 auto;
 }
 
@@ -86,4 +88,10 @@ button[type="button"]:hover {
 
 .input-container {
     margin: 10px 0;
+}
+
+.deck {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
