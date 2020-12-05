@@ -24,7 +24,7 @@ class Book {
         newDiv.className = 'card';
         newDiv.setAttribute('data-index', myLibrary.indexOf(this))
 
-        const newTitle = document.createElement('h2');
+        const newTitle = document.createElement('h3');
         newTitle.className = 'title';
         newTitle.textContent = this.title;
 
@@ -89,7 +89,7 @@ submitButton.addEventListener('click', () => {
 })
 
 deck.addEventListener('click', (e) => {
-    let data = e.target.parentNode.dataset.index;
+    let index = e.target.parentNode.parentNode.dataset.index;
 
     if (e.target.className === 'delete-button') {
         e.target.parentNode.remove();
@@ -97,4 +97,10 @@ deck.addEventListener('click', (e) => {
         updateIndex();
         console.log(myLibrary);
     }
+
+    if (e.target.name === 'read' && e.target.checked === true){
+        return myLibrary[index].isRead = true;
+    } else if(e.target.name === 'read' && e.target.checked === false){
+        return myLibrary[index].isRead = false;
+    }  
 })
