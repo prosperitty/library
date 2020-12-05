@@ -93,7 +93,7 @@ deck.addEventListener('click', (e) => {
 
     if (e.target.className === 'delete-button') {
         e.target.parentNode.remove();
-        myLibrary.splice(data, 1)   
+        myLibrary.splice(index, 1)   
         updateIndex();
         console.log(myLibrary);
     }
