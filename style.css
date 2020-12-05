@@ -18,6 +18,8 @@ h1 {
     text-transform: capitalize;
     text-align: center;
 
+    border: 1px solid black;
+    border-right: 10px solid white;
     border-radius: 3px;
     box-shadow: 1px 4px 5px 2px rgb(31, 123, 128);
     background: rgb(162, 90, 36);
