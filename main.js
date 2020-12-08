@@ -46,7 +46,7 @@ class Book {
         checkBox.setAttribute('name','read');
         if(bookRead[0].checked === true) {
             checkBox.checked = true;
-        }
+        } 
 
         newForm.appendChild(label);
         newForm.appendChild(checkBox);
@@ -81,6 +81,7 @@ submitButton.addEventListener('click', () => {
     let book = new Book(bookTitle.value,bookAuthor.value,bookPages.value,bookRead[0].checked);
 
     book.addToLibrary();
+    storeData();
     book.createNewCard();
     updateIndex();
     resetValues();
@@ -93,14 +94,45 @@ deck.addEventListener('click', (e) => {
 
     if (e.target.className === 'delete-button') {
         e.target.parentNode.remove();
-        myLibrary.splice(index, 1)   
+        myLibrary.splice(index, 1) 
+        storeData();  
         updateIndex();
         console.log(myLibrary);
     }
 
     if (e.target.name === 'read' && e.target.checked === true){
-        return myLibrary[index].isRead = true;
+        myLibrary[index].isRead = true;
+        storeData();
     } else if(e.target.name === 'read' && e.target.checked === false){
-        return myLibrary[index].isRead = false;
+        myLibrary[index].isRead = false;
+        storeData();
     }  
 })
+
+function storeData() {
+    localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
+}
+
+function getData() {
+    let storedLibrary = localStorage.getItem('myLibrary');
+    let parsedLibrary = JSON.parse(storedLibrary);
+    myLibrary = parsedLibrary;
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        let books = myLibrary[i];
+        let newBook = new Book(books.title,books.author,books.pages,books.isRead);
+
+        newBook.createNewCard();
+        if(books.isRead === true) {  
+            deck.children[i].children[3].children[1].checked = true;
+            console.log(books);
+        }
+        deck.children[i].dataset.index = i;
+    }    
+}
+
+if(!localStorage.getItem('myLibrary')) {
+    storeData()
+  } else {
+    getData();
+  }
