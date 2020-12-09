@@ -13,7 +13,7 @@ Books are now saved in localStorage and will not disappear after a page refresh.
 
 Main focuses:
 
--DOM Manipulation
--The use of the special function "class"
--The keyword "this"
--storing data with localStorage
+- DOM Manipulation
+- he use of the special function "class"
+- The keyword "this"
+- storing data with localStorage
