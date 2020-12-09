@@ -1,5 +1,4 @@
 const deck = document.querySelector('.deck');
-const card = document.querySelectorAll('.card');
 const bookTitle = document.querySelector('.title-input');
 const bookAuthor = document.querySelector('.author-input');
 const bookPages = document.querySelector('.page-input');
@@ -81,30 +80,28 @@ submitButton.addEventListener('click', () => {
     let book = new Book(bookTitle.value,bookAuthor.value,bookPages.value,bookRead[0].checked);
 
     book.addToLibrary();
-    storeData();
     book.createNewCard();
     updateIndex();
     resetValues();
-
-    console.log(myLibrary);
+    storeData();
 })
 
 deck.addEventListener('click', (e) => {
-    let index = e.target.parentNode.parentNode.dataset.index;
+    let index1 = e.target.parentNode.dataset.index;
+    let index2= e.target.parentNode.parentNode.dataset.index;
 
     if (e.target.className === 'delete-button') {
         e.target.parentNode.remove();
-        myLibrary.splice(index, 1) 
-        storeData();  
+        myLibrary.splice(index1, 1) 
         updateIndex();
-        console.log(myLibrary);
+        storeData();  
     }
 
     if (e.target.name === 'read' && e.target.checked === true){
-        myLibrary[index].isRead = true;
+        myLibrary[index2].isRead = true;
         storeData();
     } else if(e.target.name === 'read' && e.target.checked === false){
-        myLibrary[index].isRead = false;
+        myLibrary[index2].isRead = false;
         storeData();
     }  
 })
@@ -120,15 +117,14 @@ function getData() {
 
     for (let i = 0; i < myLibrary.length; i++) {
         let books = myLibrary[i];
-        let newBook = new Book(books.title,books.author,books.pages,books.isRead);
+        let storedBook = new Book(books.title,books.author,books.pages,books.isRead);
 
-        newBook.createNewCard();
+        storedBook.createNewCard();
         if(books.isRead === true) {  
             deck.children[i].children[3].children[1].checked = true;
-            console.log(books);
         }
-        deck.children[i].dataset.index = i;
     }    
+    updateIndex();
 }
 
 if(!localStorage.getItem('myLibrary')) {
