@@ -42,7 +42,8 @@ label {
     display: block;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="number"] {
     height: 30px;
     width: 100%;
     padding: 0;
@@ -52,7 +53,7 @@ input[type="text"] {
     font-size: 1em;
 }
 
-button[type="button"] {
+button[type="submit"] {
     height: 35px;
     width: 100%;
     padding: 0;
@@ -66,7 +67,7 @@ button[type="button"] {
     background-color: rgb(70, 253, 138);
 }
 
-button[type="button"]:hover {
+button[type="submit"]:hover {
     background-color: rgb(0, 221, 81);
 }
 

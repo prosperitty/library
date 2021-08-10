@@ -7,76 +7,76 @@ const submitButton = document.querySelector('.submit');
 let myLibrary = [];
 
 class Book {
-    constructor(title,author,pages,isRead) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.isRead = isRead;
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
+
+  addToLibrary() {
+    myLibrary.push(this);
+  }
+
+  createNewCard() {
+    const newDiv = document.createElement('div');
+    newDiv.className = 'card';
+    newDiv.setAttribute('data-index', myLibrary.indexOf(this));
+
+    const newTitle = document.createElement('h3');
+    newTitle.className = 'title';
+    newTitle.textContent = this.title;
+
+    const newAuthor = document.createElement('p');
+    newAuthor.className = 'author';
+    newAuthor.textContent = `by: ${this.author}`;
+
+    const newPageCount = document.createElement('p');
+    newPageCount.className = 'pageCount';
+    newPageCount.textContent = `page count: ${this.pages}`;
+
+    const newForm = document.createElement('form');
+
+    const label = document.createElement('span');
+    label.textContent = 'Read Status:';
+
+    const checkBox = document.createElement('input');
+    checkBox.setAttribute('type', 'checkbox');
+    checkBox.setAttribute('name', 'read');
+    if (bookRead[0].checked === true) {
+      checkBox.checked = true;
     }
 
-    addToLibrary() {
-        myLibrary.push(this);
-    }
+    newForm.appendChild(label);
+    newForm.appendChild(checkBox);
 
-    createNewCard() {
-        const newDiv = document.createElement('div');
-        newDiv.className = 'card';
-        newDiv.setAttribute('data-index', myLibrary.indexOf(this))
+    const newDeleteButton = document.createElement('button');
+    newDeleteButton.textContent = 'delete';
+    newDeleteButton.className = 'delete-button';
 
-        const newTitle = document.createElement('h3');
-        newTitle.className = 'title';
-        newTitle.textContent = this.title;
-
-        const newAuthor = document.createElement('p');
-        newAuthor.className = 'author';
-        newAuthor.textContent = `by: ${this.author}`;
-
-        const newPageCount = document.createElement('p');
-        newPageCount.className = 'pageCount';
-        newPageCount.textContent = `page count: ${this.pages}`;
-    
-        const newForm = document.createElement('form');
-    
-        const label = document.createElement('span');
-        label.textContent = 'Read Status:';
-    
-        const checkBox = document.createElement("input");
-        checkBox.setAttribute('type','checkbox');
-        checkBox.setAttribute('name','read');
-        if(bookRead[0].checked === true) {
-            checkBox.checked = true;
-        } 
-
-        newForm.appendChild(label);
-        newForm.appendChild(checkBox);
-
-        const newDeleteButton = document.createElement('button');
-        newDeleteButton.textContent = 'delete';
-        newDeleteButton.className = 'delete-button';
-    
-        deck.appendChild(newDiv);
-        newDiv.appendChild(newTitle);
-        newDiv.appendChild(newAuthor);
-        newDiv.appendChild(newPageCount);
-        newDiv.appendChild(newForm);
-        newDiv.appendChild(newDeleteButton)
-    }
+    deck.appendChild(newDiv);
+    newDiv.appendChild(newTitle);
+    newDiv.appendChild(newAuthor);
+    newDiv.appendChild(newPageCount);
+    newDiv.appendChild(newForm);
+    newDiv.appendChild(newDeleteButton);
+  }
 }
 
 function resetValues() {
-    bookTitle.value = '';
-    bookAuthor.value = '';
-    bookPages.value = '';
-    bookRead[1].checked = true;
+  bookTitle.value = '';
+  bookAuthor.value = '';
+  bookPages.value = '';
 }
 
 function updateIndex() {
-    for(let i = 0; i < myLibrary.length; i++) {
-        deck.children[i].dataset.index = i;
-    }
+  for (let i = 0; i < myLibrary.length; i++) {
+    deck.children[i].dataset.index = i;
+  }
 }
 
 submitButton.addEventListener('click', () => {
+  if (isValid()) {
     let book = new Book(bookTitle.value,bookAuthor.value,bookPages.value,bookRead[0].checked);
 
     book.addToLibrary();
@@ -84,51 +84,70 @@ submitButton.addEventListener('click', () => {
     updateIndex();
     resetValues();
     storeData();
+  }
 })
 
 deck.addEventListener('click', (e) => {
-    let index1 = e.target.parentNode.dataset.index;
-    let index2= e.target.parentNode.parentNode.dataset.index;
+  let index1 = e.target.parentNode.dataset.index;
+  let index2 = e.target.parentNode.parentNode.dataset.index;
 
-    if (e.target.className === 'delete-button') {
-        e.target.parentNode.remove();
-        myLibrary.splice(index1, 1) 
-        updateIndex();
-        storeData();  
-    }
+  if (e.target.className === 'delete-button') {
+    e.target.parentNode.remove();
+    myLibrary.splice(index1, 1);
+    updateIndex();
+    storeData();
+  }
 
-    if (e.target.name === 'read' && e.target.checked === true){
-        myLibrary[index2].isRead = true;
-        storeData();
-    } else if(e.target.name === 'read' && e.target.checked === false){
-        myLibrary[index2].isRead = false;
-        storeData();
-    }  
-})
+  if (e.target.name === 'read' && e.target.checked === true) {
+    myLibrary[index2].isRead = true;
+    storeData();
+  } else if (e.target.name === 'read' && e.target.checked === false) {
+    myLibrary[index2].isRead = false;
+    storeData();
+  }
+});
 
 function storeData() {
-    localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
+  localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
 }
 
 function getData() {
-    let storedLibrary = localStorage.getItem('myLibrary');
-    let parsedLibrary = JSON.parse(storedLibrary);
-    myLibrary = parsedLibrary;
+  let storedLibrary = localStorage.getItem('myLibrary');
+  let parsedLibrary = JSON.parse(storedLibrary);
+  myLibrary = parsedLibrary;
 
-    for (let i = 0; i < myLibrary.length; i++) {
-        let books = myLibrary[i];
-        let storedBook = new Book(books.title,books.author,books.pages,books.isRead);
+  for (let i = 0; i < myLibrary.length; i++) {
+    let books = myLibrary[i];
+    let storedBook = new Book(
+      books.title,
+      books.author,
+      books.pages,
+      books.isRead
+    );
 
-        storedBook.createNewCard();
-        if(books.isRead === true) {  
-            deck.children[i].children[3].children[1].checked = true;
-        }
-    }    
-    updateIndex();
+    storedBook.createNewCard();
+    if (books.isRead === true) {
+      deck.children[i].children[3].children[1].checked = true;
+    }
+  }
+  updateIndex();
 }
 
-if(!localStorage.getItem('myLibrary')) {
-    storeData()
+if (!localStorage.getItem('myLibrary')) {
+  storeData();
+} else {
+  getData();
+}
+
+function isValid() {
+  if (bookTitle.validity.valid &&
+      bookAuthor.validity.valid &&
+      bookPages.validity.valid &&
+      bookRead[0].validity.valid &&
+      bookRead[1].validity.valid  
+  ) {
+    return true;
   } else {
-    getData();
+    return false;
   }
+}
