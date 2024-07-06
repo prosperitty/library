@@ -17,4 +17,4 @@ Books are now saved in localStorage and will not disappear after a page refresh.
 ### References
 This project is part of the javascript course from [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/library)
 
-[Live Demo](https://alex-lvl.github.io/library/)
+[Live Demo](https://prosperitty.github.io/library/)
